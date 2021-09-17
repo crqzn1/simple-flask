@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'pip install flask --user'
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'pip install flask --user'
+                }
             }
         }
         stage('test') {
